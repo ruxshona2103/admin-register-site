@@ -20,11 +20,11 @@ def login_page(request):
     if request.POST:
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(request, password=password, username=username)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home_page')
-        return render(request, 'login.html')
+            return redirect("home_page")
+    return render(request, "login.html")
 
 
 @login_required_decorator
